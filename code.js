@@ -107,18 +107,22 @@ var gameInterval = setInterval(render, 30);
 
 window.addEventListener('keydown', function (e) {
     switch(e.keyCode) {
-    case 38: //down
+    case 75: //vim up
+    case 38: //up
         player.vy = -1;
         player.vx = 0;
         break;
-    case 40: //up
+    case 74: //vim down
+    case 40: //down
         player.vy = 1;
         player.vx = 0;
         break;
+    case 76: //vim right
     case 39: //right
         player.vx = 1;
         player.vy = 0;
         break;
+    case 72: //vim left
     case 37: //left
         player.vx = -1;
         player.vy = 0;
