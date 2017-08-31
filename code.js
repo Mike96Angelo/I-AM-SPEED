@@ -1,3 +1,4 @@
+(function () {
 var canvas = document.getElementById('game');
 
 var ctx = canvas.getContext('2d');
@@ -10,8 +11,8 @@ function Player() {
     _.vx = 0;
     _.vy = 0;
     _.speed = 1;
-    _.w = 5;
-    _.h = 5;
+    _.w = 10;
+    _.h = 10;
 }
 
 Player.prototype = {
@@ -72,7 +73,7 @@ function render() {
     var edgeTouch = false;
 
     if (player.overlaps(point)) {
-        player.speed += 0.1;
+        player.speed -= 0.1;
 
         newPoint();
     }
@@ -106,6 +107,7 @@ function render() {
 var gameInterval = setInterval(render, 30);
 
 window.addEventListener('keydown', function (e) {
+    player.speed += 0.05;
     switch(e.keyCode) {
     case 75: //vim up
     case 38: //up
@@ -129,3 +131,4 @@ window.addEventListener('keydown', function (e) {
         break;
     }
 }, false);
+}())
