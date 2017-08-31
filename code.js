@@ -13,6 +13,8 @@ function Player() {
     _.speed = 1;
     _.w = 10;
     _.h = 10;
+
+    _.score = 0
 }
 
 Player.prototype = {
@@ -74,7 +76,7 @@ function render() {
 
     if (player.overlaps(point)) {
         player.speed -= 0.1;
-
+        player.score ++
         newPoint();
     }
 
@@ -86,8 +88,8 @@ function render() {
 
     if (edgeTouch) {
 
-        if (player.speed > bestScore) bestScore = player.speed;
-        alert('your Score: '+parseInt(10*player.speed)+'\nbest: '+parseInt(10*bestScore));
+        if (player.score > bestScore) bestScore = player.score;
+        alert('your Score: '+parseInt(player.score)+'\nbest: '+parseInt(bestScore));
         player = new Player();
 
         newPoint();
@@ -107,7 +109,8 @@ function render() {
 var gameInterval = setInterval(render, 30);
 
 window.addEventListener('keydown', function (e) {
-    player.speed += 0.05;
+    var ovy = player.vy
+    var ovx = player.vx
     switch(e.keyCode) {
     case 75: //vim up
     case 38: //up
@@ -129,6 +132,10 @@ window.addEventListener('keydown', function (e) {
         player.vx = -1;
         player.vy = 0;
         break;
+    }
+
+    if (ovx != player.vx || ovy != player.vy) {
+        player.speed += 0.15
     }
 }, false);
 }())
