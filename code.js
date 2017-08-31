@@ -10,7 +10,7 @@ function Player() {
     _.y = 50;
     _.vx = 0;
     _.vy = 0;
-    _.speed = 1;
+    _.speed = 3;
     _.w = 10;
     _.h = 10;
 
